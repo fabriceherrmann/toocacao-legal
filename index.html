@@ -3,27 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TooCacao — Informations légales</title>
+<title>TooCacao — Téléchargez l'application</title>
 <style>
   body {
     background: #111009;
     color: #d4b880;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 48px 20px;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 20px;
+    text-align: center;
   }
-  h1 { color: #e8cfa0; }
-  a { color: #c96030; display: block; margin: 12px 0; font-size: 18px; }
+  .logo { font-size: 48px; margin-bottom: 8px; }
+  h1 {
+    color: #e8cfa0;
+    font-size: 32px;
+    margin: 0 0 8px;
+  }
+  h1 .brown { color: #a05a28; }
+  p {
+    max-width: 420px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+  .stores {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 280px;
+  }
+  .store-btn {
+    display: block;
+    background: #1c1410;
+    border: 1px solid #3a2810;
+    border-radius: 12px;
+    padding: 14px 20px;
+    color: #e8cfa0;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .store-btn:hover { border-color: #c96030; }
+  footer {
+    margin-top: 48px;
+    font-size: 13px;
+  }
+  footer a { color: #c96030; }
 </style>
 </head>
 <body>
-<h1>TooCacao</h1>
-<a href="politique-de-confidentialite.html">Politique de confidentialité (FR)</a>
-<a href="politique-de-confidentialite-en.html">Privacy Policy (EN)</a>
-<a href="politique-de-confidentialite-es.html">Política de privacidad (ES)</a>
-<a href="assistance.html">Assistance (FR)</a>
-<a href="assistance-en.html">Support (EN)</a>
-<a href="assistance-es.html">Asistencia (ES)</a>
+
+<div class="logo">🍫</div>
+<h1>Too<span class="brown">Cacao</span></h1>
+<p>Le compagnon des amateurs de chocolat exigeants. Scannez, dégustez, notez et découvrez les meilleures tablettes.</p>
+
+<div class="stores">
+  <a class="store-btn" href="https://apps.apple.com/app/id6792381626">📱 Télécharger sur l'App Store</a>
+  <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.toocacao.app">🤖 Télécharger sur Google Play</a>
+</div>
+
+<footer>
+  <a href="legal.html">Mentions légales</a>
+</footer>
+
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var isIOS = /iPhone|iPad|iPod/i.test(ua);
+    var isAndroid = /Android/i.test(ua);
+    if (isIOS) {
+      window.location.replace('https://apps.apple.com/app/id6792381626');
+    } else if (isAndroid) {
+      window.location.replace('https://play.google.com/store/apps/details?id=com.toocacao.app');
+    }
+    // Desktop / autre : on laisse la page avec les deux boutons visibles.
+  })();
+</script>
+
 </body>
 </html>

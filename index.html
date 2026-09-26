@@ -42,33 +42,14 @@
   }
   .stores {
     display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
-    max-width: 280px;
-  }
-  .store-btn {
-    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    gap: 12px;
-    background: #1c1410;
-    border: 1px solid #3a2810;
-    border-radius: 12px;
-    padding: 12px 18px;
-    color: #e8cfa0;
-    text-decoration: none;
-    text-align: left;
-    transition: border-color 0.15s;
+    gap: 14px;
   }
-  .store-btn:hover { border-color: #c96030; }
-  .store-btn svg { flex-shrink: 0; }
-  .store-btn .label {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.25;
-  }
-  .store-btn .label small { font-size: 11px; color: #9c8560; }
-  .store-btn .label strong { font-size: 16px; }
+  .stores a { display: block; line-height: 0; transition: opacity 0.15s; }
+  .stores a:hover { opacity: 0.85; }
+  .stores img { height: 54px; width: auto; }
 
   .qr-section {
     margin-top: 44px;
@@ -95,6 +76,13 @@
     font-size: 13px;
   }
   footer a { color: #c96030; }
+  footer .tm {
+    margin: 14px auto 0;
+    max-width: 420px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #7a6040;
+  }
 </style>
 </head>
 <body>
@@ -157,13 +145,11 @@
 <p class="tagline">Le compagnon des amateurs de chocolat exigeants. Scannez, dégustez, notez et découvrez les meilleures tablettes.</p>
 
 <div class="stores">
-  <a class="store-btn" href="https://apps.apple.com/app/id6792381626">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#e8cfa0"><path d="M16.365 1.43c0 1.14-.393 2.15-1.176 3.03-.955 1.08-2.156 1.72-3.474 1.61-.032-.1-.05-.221-.05-.362 0-1.12.437-2.16 1.234-3.02.42-.46.98-.85 1.68-1.15.7-.31 1.36-.47 1.98-.5.03.13.06.26.06.38zm4.352 15.98c-.24.55-.53 1.06-.87 1.55-.47.68-.86 1.15-1.16 1.42-.46.42-.95.63-1.48.65-.38 0-.83-.11-1.35-.33-.53-.22-1.01-.33-1.46-.33-.47 0-.97.11-1.51.33-.54.22-.98.33-1.32.34-.51.02-1.02-.19-1.51-.63-.32-.28-.73-.77-1.22-1.47-.53-.75-.97-1.63-1.31-2.65-.37-1.1-.55-2.17-.55-3.2 0-1.19.26-2.22.77-3.09.4-.7.94-1.25 1.62-1.66.68-.4 1.41-.61 2.2-.62.4 0 .93.13 1.6.38.66.25 1.09.38 1.28.38.14 0 .61-.15 1.4-.44.75-.27 1.38-.38 1.9-.34 1.4.11 2.46.67 3.16 1.66-1.25.76-1.87 1.82-1.86 3.18.01 1.06.39 1.94 1.14 2.65.34.32.72.57 1.14.75-.09.27-.19.53-.3.79z"/></svg>
-    <span class="label"><small>Télécharger sur l'</small><strong>App Store</strong></span>
+  <a href="https://apps.apple.com/app/id6792381626">
+    <img src="badges/app-store-fr.svg" alt="Télécharger dans l'App Store">
   </a>
-  <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.toocacao.app">
-    <svg width="26" height="26" viewBox="0 0 24 24"><path d="M3 2.5v19a1 1 0 0 0 1.5.87l16-9.5a1 1 0 0 0 0-1.74l-16-9.5A1 1 0 0 0 3 2.5z" fill="#c96030"/><path d="M3 2.5v9.5l8.5-2z" fill="#7ab840"/><path d="M3 21.5v-9.5l8.5 2z" fill="#4a90d9"/><path d="M11.5 12l-8.5-2v0l16-7.24z" fill="#e8b800"/></svg>
-    <span class="label"><small>Disponible sur</small><strong>Google Play</strong></span>
+  <a href="https://play.google.com/store/apps/details?id=com.toocacao.app">
+    <img src="badges/google-play-fr.png" alt="Disponible sur Google Play">
   </a>
 </div>
 
@@ -174,6 +160,7 @@
 
 <footer>
   <a href="legal.html">Mentions légales</a>
+  <p class="tm">Apple et le logo Apple sont des marques d'Apple Inc., déposées aux États-Unis et dans d'autres pays. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.</p>
 </footer>
 
 <script>

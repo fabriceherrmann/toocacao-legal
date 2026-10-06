@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Modération — TooCacao</title>
+<style>
+  body {
+    background: #111009;
+    color: #d4b880;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  h1 { color: #e8cfa0; font-size: 28px; margin-bottom: 24px; }
+  .result {
+    background: #1c1410;
+    border: 1px solid #3a2810;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 18px;
+  }
+  .icon { font-size: 32px; display: block; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<h1>Modération TooCacao</h1>
+
+<div class="result">
+  <span class="icon" id="icon">ℹ️</span>
+  <span id="message">Aucune action à afficher.</span>
+</div>
+
+<script>
+  // Page de confirmation des liens envoyés par la fonction de modération
+  // (Supabase n'autorise pas une fonction à afficher une page HTML). Seuls
+  // des codes connus sont affichés : aucun texte de l'URL n'est injecté.
+  var RESULTS = {
+    approved:          ['✅', 'Photo approuvée : elle est de nouveau visible dans l’app.'],
+    rejected:          ['❌', 'Photo refusée et supprimée.'],
+    already_approved:  ['ℹ️', 'Cette photo a déjà été approuvée.'],
+    already_rejected:  ['ℹ️', 'Cette photo a déjà été refusée.'],
+    dismissed:         ['✅', 'Signalement classé sans suite : le contenu reste en ligne.'],
+    tasting_deleted:   ['🗑', 'Dégustation supprimée.'],
+    photo_removed:     ['🖼', 'Photo retirée de la fiche.'],
+    not_found:         ['⚠️', 'Élément introuvable (déjà traité ou supprimé ?).'],
+    invalid:           ['⚠️', 'Lien invalide.'],
+    error:             ['⚠️', 'Une erreur est survenue. Réessaie, ou demande à Claude Code de vérifier.']
+  };
+  var code = new URLSearchParams(location.search).get('r');
+  var result = RESULTS[code];
+  if (result) {
+    document.getElementById('icon').textContent = result[0];
+    document.getElementById('message').textContent = result[1];
+  }
+</script>
+
+</body>
+</html>

@@ -46,7 +46,7 @@
 <body>
 
 <h1>Política de privacidad de TooCacao</h1>
-<p class="updated">Última actualización: 6 de octubre de 2026</p>
+<p class="updated">Última actualización: 11 de octubre de 2026</p>
 
 <p>
   TooCacao es una aplicación que permite escanear, valorar y descubrir tabletas de chocolate.
@@ -71,6 +71,7 @@
   <li><strong>Fotos</strong>: si añades una foto a una ficha de chocolate, se almacena para mostrarse en la aplicación. La lectura de etiquetas (cuando una tableta no tiene código de barras) analiza la foto directamente en tu teléfono: esa foto no se envía ni se conserva.</li>
   <li><strong>Contenido que creas</strong>: tus catas (valoraciones, aromas, perfil sensorial, comentarios, precio), favoritos e historial de escaneos. Tus catas son visibles para los demás usuarios de la aplicación, junto con tu seudónimo si tienes uno; tus favoritos y tu historial de escaneos siguen siendo privados.</li>
   <li><strong>Denuncias</strong>: si denuncias un contenido (una cata o una ficha de chocolate), se guardan el motivo, los detalles que añadas y tu identificador para tramitar la denuncia. Nunca se comunican al autor del contenido denunciado y se eliminan automáticamente al cabo de 12 meses.</li>
+  <li><strong>Datos de diagnóstico</strong>: si la aplicación se cierra inesperadamente o sufre un error, se envía un informe técnico anónimo (modelo y versión del teléfono, versión de la aplicación, traza técnica del error). No contiene ni tu correo electrónico, ni tu dirección IP, ni el contenido que introduces, y solo sirve para corregir errores.</li>
   <li><strong>Lugares de compra</strong>: si indicas dónde compraste una tableta, la dirección del lugar (a través de Google Places) se guarda y se comparte con otros usuarios (sin vínculo con tu identidad).</li>
 </ul>
 <p>
@@ -81,7 +82,10 @@
 <ul>
   <li><strong>Supabase</strong> — alojamiento de la base de datos, la autenticación y las fotos.</li>
   <li><strong>Google</strong> — inicio de sesión mediante Google Sign-In, visualización del mapa (Google Maps) y búsqueda de lugares (Google Places, consultado a través de nuestros servidores).</li>
+  <li><strong>Google Cloud</strong> — análisis automático de las fotos y textos publicados (comentarios, seudónimos) para descartar contenidos inapropiados.</li>
   <li><strong>Apple</strong> — inicio de sesión mediante Sign in with Apple.</li>
+  <li><strong>Sentry</strong> (servidores ubicados en la Unión Europea) — recepción de informes de fallos anónimos.</li>
+  <li><strong>Resend</strong> — envío al editor de los correos de moderación (contenidos por revisar y denuncias).</li>
   <li><strong>Open Food Facts</strong> — base de datos pública de productos, consultada para completar las fichas de chocolate (no se les transmite ningún dato personal).</li>
 </ul>
 

@@ -3,95 +3,158 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TooCacao — Téléchargez l'application</title>
+<title>TooCacao – Le carnet des amateurs de chocolat</title>
+<meta name="description" content="Scannez une tablette, notez-la et découvrez plus de 1 700 chocolats, des grandes maisons aux artisans bean-to-bar. Application gratuite, sans publicité, sur iPhone et Android.">
+<meta name="apple-itunes-app" content="app-id=6792381626">
+<meta name="theme-color" content="#111009">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://toocacao.com/">
+<meta property="og:title" content="TooCacao – Le carnet des amateurs de chocolat">
+<meta property="og:description" content="Scannez, notez et découvrez plus de 1 700 tablettes. Gratuit, sans publicité.">
+<meta property="og:image" content="https://toocacao.com/img/partage-fr.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lora:ital,wght@1,400;1,600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bg: #111009;
+    --card: #1b1610;
+    --line: #2e2416;
+    --gold: #e8cfa0;
+    --beige: #d4b880;
+    --muted: #9c8560;
+    --faint: #7a6040;
+    --copper: #a05a28;
+    --accent: #c96030;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    background: #111009;
-    color: #d4b880;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    min-height: 100vh;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 48px 20px;
-    text-align: center;
+    background: var(--bg);
+    color: var(--beige);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
   }
-  .logo-wrap {
-    width: 90px;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 12px;
-    filter: drop-shadow(0 8px 20px rgba(201, 96, 48, 0.35));
-  }
-  h1 {
-    color: #e8cfa0;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 38px;
-    margin: 0 0 8px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-  }
-  h1 .brown { color: #a05a28; }
-  p.tagline {
-    max-width: 420px;
-    line-height: 1.5;
-    margin: 0 0 36px;
-    color: #d4b880;
-  }
-  .stores {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 14px;
-  }
-  .stores a { display: block; line-height: 0; transition: opacity 0.15s; }
-  .stores a:hover { opacity: 0.85; }
-  .stores img { height: 54px; width: auto; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  .brown { color: var(--copper); }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; color: var(--gold); margin: 0; text-wrap: balance; }
+  .sub { font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 600; color: #c8a870; text-wrap: balance; }
 
-  .qr-section {
-    margin-top: 44px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+  /* En-tête */
+  header { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand-logo { width: 44px; height: 44px; border-radius: 50%; background: #e8cfa0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .brand-logo svg { width: 19px; height: 43px; }
+  .brand span { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 600; color: var(--gold); }
+  .langs { display: flex; gap: 4px; }
+  .langs button {
+    background: none; border: 1px solid transparent; color: var(--muted); font: 500 13px 'DM Sans', sans-serif;
+    padding: 6px 9px; border-radius: 8px; cursor: pointer; letter-spacing: .05em;
   }
-  .qr-section img {
-    border-radius: 12px;
-    width: 170px;
-    height: 170px;
-  }
-  .qr-section span {
-    font-size: 14px;
-    color: #9c8560;
-    max-width: 260px;
-  }
+  .langs button[aria-pressed="true"] { color: var(--gold); border-color: var(--line); background: var(--card); }
 
-  footer {
-    margin-top: 48px;
-    font-size: 13px;
+  /* Bloc principal */
+  .hero { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; padding: 40px 0 72px; }
+  .eyebrow { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+  .hero h1 { font-size: clamp(38px, 5.4vw, 60px); line-height: 1.1; }
+  .hero .sub { font-size: clamp(19px, 2.2vw, 23px); line-height: 1.45; margin: 22px 0 32px; max-width: 520px; }
+  .stores { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .stores a { display: block; line-height: 0; transition: opacity .15s; }
+  .stores a:hover { opacity: .85; }
+  .stores img { height: 52px; width: auto; }
+  .free { margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+
+  /* Téléphone */
+  .phone {
+    width: 100%; max-width: 300px; margin: 0 auto; border-radius: 40px; overflow: hidden;
+    border: 3px solid #3a2810; box-shadow: 0 30px 80px rgba(0,0,0,.65), 0 0 0 10px #17120b;
+    background: #000; aspect-ratio: 1290 / 2646;
   }
-  footer a { color: #c96030; }
-  footer .tm {
-    margin: 14px auto 0;
-    max-width: 420px;
-    font-size: 11px;
-    line-height: 1.5;
-    color: #7a6040;
+  .phone img { display: block; width: 100%; height: auto; margin-top: -11.6%; }
+  .hero .phone { max-width: 320px; transform: rotate(2deg); }
+
+  /* Chiffres */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .stat { padding: 28px 12px; text-align: center; }
+  .stat + .stat { border-left: 1px solid var(--line); }
+  .stat b { display: block; font-family: 'Lora', Georgia, serif; font-style: italic; font-weight: 600; font-size: 34px; color: var(--gold); line-height: 1.2; }
+  .stat span { font-size: 14px; color: var(--muted); }
+
+  /* Fonctions */
+  .features { padding: 40px 0; }
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 56px 0; }
+  .feature:nth-child(even) .text { order: 2; }
+  .feature .num { font-family: 'Lora', Georgia, serif; font-style: italic; color: var(--copper); font-size: 20px; margin-bottom: 8px; }
+  .feature h2 { font-size: clamp(30px, 3.6vw, 42px); line-height: 1.15; }
+  .feature .sub { font-size: 20px; line-height: 1.45; margin: 16px 0 0; max-width: 440px; }
+  .feature .phone { max-width: 280px; }
+
+  /* Points forts */
+  .why { padding: 72px 0; }
+  .why h2 { text-align: center; font-size: clamp(30px, 3.6vw, 40px); margin-bottom: 40px; }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px 22px; }
+  .card h3 { font-size: 21px; line-height: 1.25; margin-bottom: 8px; }
+  .card p { margin: 0; font-size: 15.5px; color: var(--beige); }
+
+  /* Appel final */
+  .cta { text-align: center; padding: 80px 0 72px; border-top: 1px solid var(--line); }
+  .cta h2 { font-size: clamp(32px, 4.4vw, 48px); line-height: 1.15; }
+  .cta .sub { font-size: 21px; margin: 16px auto 32px; max-width: 560px; }
+  .cta .stores { justify-content: center; }
+  .qr { margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .qr img { width: 150px; height: 150px; border-radius: 12px; }
+  .qr span { font-size: 14px; color: var(--muted); max-width: 260px; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; text-align: center; font-size: 14px; color: var(--muted); }
+  footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-bottom: 18px; }
+  footer p { margin: 8px auto 0; max-width: 620px; font-size: 12px; line-height: 1.5; color: var(--faint); }
+
+  /* Bouton fixe sur mobile */
+  .sticky { display: none; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 16px 0 56px; text-align: center; }
+    .hero .sub { margin-left: auto; margin-right: auto; }
+    .hero .stores { justify-content: center; }
+    .hero .phone { max-width: 260px; transform: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(3) { border-left: none; }
+    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+    .feature { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; text-align: center; }
+    .feature:nth-child(even) .text { order: 0; }
+    .feature .sub { margin-left: auto; margin-right: auto; }
+    .feature .phone { max-width: 240px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .qr { display: none; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 16px; padding-bottom: 84px; }
+    .brand span { font-size: 21px; }
+    .grid { grid-template-columns: 1fr; }
+    .stores img { height: 46px; }
+    .sticky.on {
+      display: block; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 10;
+      background: var(--accent); color: #fff; text-align: center; text-decoration: none;
+      font: 500 17px 'DM Sans', sans-serif; padding: 15px; border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.6);
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="logo-wrap">
-  <svg width="60" height="135" viewBox="0 0 50 113" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-35deg);">
+<div class="wrap">
+  <header>
+    <a class="brand" href="/" aria-label="TooCacao">
+      <span class="brand-logo"><svg width="60" height="135" viewBox="0 0 50 113" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(-35deg);">
     <defs>
       <radialGradient id="rg-corps" cx="40%" cy="28%" r="65%" fx="38%" fy="22%">
         <stop offset="0%" stop-color="#c96030"/><stop offset="30%" stop-color="#a03e18"/>
@@ -141,44 +204,260 @@
       <path d="M72.5 13 C72 10.5,71.5 7.5,71 4.5 C70.8 3,71.5 1.5,73 1 C74 0.7,75 1,75.5 2 C76 3,76 4.5,75.5 7 C75 9.5,74.5 11.5,73.5 13Z" fill="url(#tige-grad)"/>
     </g>
     </g>
-  </svg>
+  </svg></span>
+      <span>Too<span class="brown">Cacao</span></span>
+    </a>
+    <div class="langs" role="group" aria-label="Langue">
+      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow" data-t="eyebrow">Gratuit · Sans publicité · iPhone et Android</p>
+      <h1 data-t="h1">Le <span>car</span><span class="brown">net</span> des amateurs de <span>cho</span><span class="brown">colat</span></h1>
+      <p class="sub" data-t="lead">Scannez une tablette, notez-la et découvrez plus de 1&nbsp;700 chocolats, des grandes maisons aux artisans bean&#8209;to&#8209;bar.</p>
+      <div class="stores">
+        <a class="ios" href="https://apps.apple.com/app/id6792381626"><img data-badge="app-store" src="badges/app-store-fr.svg" alt="Télécharger dans l'App Store"></a>
+        <a class="android" href="https://play.google.com/store/apps/details?id=com.toocacao.app"><img data-badge="google-play" src="badges/google-play-fr.png" alt="Disponible sur Google Play"></a>
+      </div>
+      <p class="free" data-t="free">Sans limite de scans, sans abonnement.</p>
+    </div>
+    <div class="phone"><img data-shot="1" src="img/screens/fr-1.jpg" alt="Écran d'accueil de TooCacao : tendances et Top 10" width="720" height="1560"></div>
+  </section>
 </div>
 
-<h1>Too<span class="brown">Cacao</span></h1>
-<p class="tagline">Le compagnon des amateurs de chocolat exigeants. Scannez, dégustez, notez et découvrez les meilleures tablettes.</p>
-
-<div class="stores">
-  <a href="https://apps.apple.com/app/id6792381626">
-    <img src="badges/app-store-fr.svg" alt="Télécharger dans l'App Store">
-  </a>
-  <a href="https://play.google.com/store/apps/details?id=com.toocacao.app">
-    <img src="badges/google-play-fr.png" alt="Disponible sur Google Play">
-  </a>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><b>1&nbsp;700+</b><span data-t="s1">tablettes</span></div>
+    <div class="stat"><b>170</b><span data-t="s2">marques et chocolatiers</span></div>
+    <div class="stat"><b>1&nbsp;s</b><span data-t="s3">pour scanner</span></div>
+    <div class="stat"><b>0&nbsp;€</b><span data-t="s4">et sans publicité</span></div>
+  </div>
 </div>
 
-<div class="qr-section">
-  <img src="qr-toocacao.svg" alt="QR code TooCacao" width="150" height="150">
-  <span>Scannez avec votre téléphone pour ouvrir directement la bonne page de téléchargement</span>
+<div class="wrap features">
+  <section class="feature">
+    <div class="text">
+      <div class="num">01</div>
+      <h2 data-t="f2">Plus de 1&nbsp;700 <span>tab</span><span class="brown">lettes</span>, des grandes maisons aux <span>art</span><span class="brown">isans</span></h2>
+      <p class="sub" data-t="f2s">Origine, % de cacao, bio, bean&#8209;to&#8209;bar et la note de la communauté</p>
+    </div>
+    <div class="phone"><img data-shot="2" src="img/screens/fr-2.jpg" alt="" loading="lazy" width="720" height="1560"></div>
+  </section>
+  <section class="feature">
+    <div class="text">
+      <div class="num">02</div>
+      <h2 data-t="f3"><span>Sca</span><span class="brown">nnez</span>, la fiche s'ouvre</h2>
+      <p class="sub" data-t="f3s">Un code&#8209;barres, une seconde, toutes les infos</p>
+    </div>
+    <div class="phone"><img data-shot="3" src="img/screens/fr-3.jpg" alt="" loading="lazy" width="720" height="1560"></div>
+  </section>
+  <section class="feature">
+    <div class="text">
+      <div class="num">03</div>
+      <h2 data-t="f4">Notez chaque <span>tab</span><span class="brown">lette</span>, retrouvez chaque <span>sav</span><span class="brown">eur</span></h2>
+      <p class="sub" data-t="f4s">Note, arômes et profil sensoriel dans votre carnet</p>
+    </div>
+    <div class="phone"><img data-shot="4" src="img/screens/fr-4.jpg" alt="" loading="lazy" width="720" height="1560"></div>
+  </section>
+  <section class="feature">
+    <div class="text">
+      <div class="num">04</div>
+      <h2 data-t="f5">L'avis de toute une <span>com</span><span class="brown">munauté</span></h2>
+      <p class="sub" data-t="f5s">Profil sensoriel moyen, prix et dégustations des amateurs</p>
+    </div>
+    <div class="phone"><img data-shot="5" src="img/screens/fr-5.jpg" alt="" loading="lazy" width="720" height="1560"></div>
+  </section>
+  <section class="feature">
+    <div class="text">
+      <div class="num">05</div>
+      <h2 data-t="f6">Pas de code&#8209;<span>bar</span><span class="brown">res</span>&nbsp;? Photographiez l'<span>éti</span><span class="brown">quette</span></h2>
+      <p class="sub" data-t="f6s">TooCacao lit l'emballage et retrouve la tablette</p>
+    </div>
+    <div class="phone"><img data-shot="6" src="img/screens/fr-6.jpg" alt="" loading="lazy" width="720" height="1560"></div>
+  </section>
+</div>
+
+<div class="wrap why">
+  <h2 data-t="whyTitle">Pensé pour les amateurs exigeants</h2>
+  <div class="grid">
+    <div class="card"><h3 data-t="w1">Gratuit, vraiment</h3><p data-t="w1p">Pas d'abonnement, pas de limite de scans ni de dégustations.</p></div>
+    <div class="card"><h3 data-t="w2">Sans publicité</h3><p data-t="w2p">Rien ne vient se glisser entre vous et votre tablette.</p></div>
+    <div class="card"><h3 data-t="w3">Fait pour le bean&#8209;to&#8209;bar</h3><p data-t="w3p">Origines, pourcentages, glossaire&nbsp;: tout pour comprendre ce que vous goûtez.</p></div>
+    <div class="card"><h3 data-t="w4">En trois langues</h3><p data-t="w4p">Français, anglais et espagnol, sur iPhone et Android.</p></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="cta">
+    <h2 data-t="ctaTitle">Votre prochaine tablette préférée vous attend</h2>
+    <p class="sub" data-t="ctaSub">Téléchargez TooCacao gratuitement et commencez votre carnet.</p>
+    <div class="stores">
+      <a class="ios" href="https://apps.apple.com/app/id6792381626"><img data-badge="app-store" src="badges/app-store-fr.svg" alt="Télécharger dans l'App Store" loading="lazy"></a>
+      <a class="android" href="https://play.google.com/store/apps/details?id=com.toocacao.app"><img data-badge="google-play" src="badges/google-play-fr.png" alt="Disponible sur Google Play" loading="lazy"></a>
+    </div>
+    <div class="qr">
+      <img src="qr-toocacao.svg" alt="QR code TooCacao" loading="lazy">
+      <span data-t="qr">Scannez avec votre téléphone pour ouvrir la bonne page de téléchargement</span>
+    </div>
+  </section>
 </div>
 
 <footer>
-  <a href="legal.html">Mentions légales</a> · <a href="conditions-utilisation.html">Conditions d'utilisation</a> · <a href="politique-de-confidentialite.html">Confidentialité</a>
-  <p class="tm">Apple et le logo Apple sont des marques d'Apple Inc., déposées aux États-Unis et dans d'autres pays. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.</p>
+  <div class="wrap">
+    <nav>
+      <a data-href="support" href="assistance.html" data-t="lSupport">Assistance</a>
+      <a data-href="terms" href="conditions-utilisation.html" data-t="lTerms">Conditions d'utilisation</a>
+      <a data-href="privacy" href="politique-de-confidentialite.html" data-t="lPrivacy">Confidentialité</a>
+      <a href="legal.html" data-t="lLegal">Mentions légales</a>
+    </nav>
+    <p data-t="off">Une partie des fiches provient d'<a href="https://fr.openfoodfacts.org" rel="noopener">Open Food Facts</a>, sous licence ODbL.</p>
+    <p>Apple et le logo Apple sont des marques d'Apple Inc., déposées aux États-Unis et dans d'autres pays. App Store est une marque de service d'Apple Inc. Google Play et le logo Google Play sont des marques de Google LLC.</p>
+  </div>
 </footer>
 
-<script>
-  (function () {
-    var ua = navigator.userAgent || '';
-    var isIOS = /iPhone|iPad|iPod/i.test(ua);
-    var isAndroid = /Android/i.test(ua);
-    if (isIOS) {
-      window.location.replace('https://apps.apple.com/app/id6792381626');
-    } else if (isAndroid) {
-      window.location.replace('https://play.google.com/store/apps/details?id=com.toocacao.app');
-    }
-    // Desktop / autre : on laisse la page avec les boutons et le QR code visibles.
-  })();
-</script>
+<a class="sticky" href="https://apps.apple.com/app/id6792381626" data-t="sticky">Télécharger gratuitement</a>
 
+<script>
+(function () {
+  var IOS = 'https://apps.apple.com/app/id6792381626';
+  var ANDROID = 'https://play.google.com/store/apps/details?id=com.toocacao.app';
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(ua);
+  var isAndroid = /Android/i.test(ua);
+
+  // Le QR code des flyers pointe ici : un scan (téléphone, sans page d'origine)
+  // ouvre directement le bon store. Les visiteurs venus d'un lien voient le site.
+  // « ?site » force l'affichage du site.
+  var forceSite = /[?&]site\b/.test(location.search);
+  if ((isIOS || isAndroid) && !document.referrer && !forceSite) {
+    location.replace(isIOS ? IOS : ANDROID);
+    return;
+  }
+
+  var T = {
+    en: {
+      title: 'TooCacao – The chocolate lover\'s tasting journal',
+      eyebrow: 'Free · No ads · iPhone and Android',
+      h1: 'The <span>cho</span><span class="brown">colate</span> lover\'s tasting <span>jou</span><span class="brown">rnal</span>',
+      lead: 'Scan a bar, rate it and discover more than 1,700 chocolates, from renowned houses to bean&#8209;to&#8209;bar makers.',
+      free: 'No scan limits, no subscription.',
+      s1: 'bars', s2: 'brands and makers', s3: 'to scan', s4: 'and no ads',
+      f2: '1,700+ bars, from great <span>hou</span><span class="brown">ses</span> to craft <span>mak</span><span class="brown">ers</span>',
+      f2s: 'Origin, cocoa %, organic, bean&#8209;to&#8209;bar and the community rating',
+      f3: 'Scan a <span>bar</span><span class="brown">code</span>, see everything',
+      f3s: 'One second for origin, cocoa %, organic and more',
+      f4: 'Rate every bar, remember every <span>fla</span><span class="brown">vor</span>',
+      f4s: 'Rating, flavors and sensory profile in your journal',
+      f5: 'What the <span>com</span><span class="brown">munity</span> really thinks',
+      f5s: 'Average sensory profile, price and tastings from fellow lovers',
+      f6: 'No <span>bar</span><span class="brown">code</span>? Just snap the <span>wra</span><span class="brown">pper</span>',
+      f6s: 'TooCacao reads the label and finds the bar',
+      whyTitle: 'Made for discerning chocolate lovers',
+      w1: 'Truly free', w1p: 'No subscription, no limit on scans or tastings.',
+      w2: 'No ads', w2p: 'Nothing comes between you and your chocolate.',
+      w3: 'Built for bean&#8209;to&#8209;bar', w3p: 'Origins, percentages, glossary: everything to understand what you taste.',
+      w4: 'In three languages', w4p: 'English, French and Spanish, on iPhone and Android.',
+      ctaTitle: 'Your next favorite bar is waiting',
+      ctaSub: 'Download TooCacao for free and start your journal.',
+      qr: 'Scan with your phone to open the right download page',
+      lSupport: 'Support', lTerms: 'Terms of use', lPrivacy: 'Privacy', lLegal: 'Legal notice',
+      off: 'Some product data comes from <a href="https://world.openfoodfacts.org" rel="noopener">Open Food Facts</a>, under the ODbL license.',
+      sticky: 'Download for free',
+      appStoreAlt: 'Download on the App Store', playAlt: 'Get it on Google Play'
+    },
+    es: {
+      title: 'TooCacao – El diario de los amantes del chocolate',
+      eyebrow: 'Gratis · Sin publicidad · iPhone y Android',
+      h1: 'El <span>dia</span><span class="brown">rio</span> de los amantes del <span>cho</span><span class="brown">colate</span>',
+      lead: 'Escanea una tableta, valórala y descubre más de 1.700 chocolates, de las grandes casas a los artesanos bean&#8209;to&#8209;bar.',
+      free: 'Sin límite de escaneos, sin suscripción.',
+      s1: 'tabletas', s2: 'marcas y chocolateros', s3: 'para escanear', s4: 'y sin publicidad',
+      f2: 'Más de 1.700 <span>tab</span><span class="brown">letas</span>, de grandes casas a <span>art</span><span class="brown">esanos</span>',
+      f2s: 'Origen, % de cacao, ecológico, bean&#8209;to&#8209;bar y la valoración de la comunidad',
+      f3: '<span>Esc</span><span class="brown">anea</span> y descubre',
+      f3s: 'Un código de barras, un segundo, toda la información',
+      f4: 'Valora cada <span>tab</span><span class="brown">leta</span>, recuerda cada <span>sab</span><span class="brown">or</span>',
+      f4s: 'Valoración, aromas y perfil sensorial en tu diario',
+      f5: 'La opinión de toda una <span>com</span><span class="brown">unidad</span>',
+      f5s: 'Perfil sensorial medio, precio y catas de los aficionados',
+      f6: '¿Sin código? Fotografía el <span>env</span><span class="brown">oltorio</span>',
+      f6s: 'TooCacao lee la etiqueta y encuentra la tableta',
+      whyTitle: 'Pensado para los amantes exigentes',
+      w1: 'Gratis de verdad', w1p: 'Sin suscripción, sin límite de escaneos ni de catas.',
+      w2: 'Sin publicidad', w2p: 'Nada se interpone entre tú y tu tableta.',
+      w3: 'Hecho para el bean&#8209;to&#8209;bar', w3p: 'Orígenes, porcentajes, glosario: todo para entender lo que pruebas.',
+      w4: 'En tres idiomas', w4p: 'Español, francés e inglés, en iPhone y Android.',
+      ctaTitle: 'Tu próxima tableta favorita te espera',
+      ctaSub: 'Descarga TooCacao gratis y empieza tu diario.',
+      qr: 'Escanea con tu teléfono para abrir la página de descarga adecuada',
+      lSupport: 'Asistencia', lTerms: 'Condiciones de uso', lPrivacy: 'Privacidad', lLegal: 'Aviso legal',
+      off: 'Parte de las fichas procede de <a href="https://es.openfoodfacts.org" rel="noopener">Open Food Facts</a>, bajo licencia ODbL.',
+      sticky: 'Descargar gratis',
+      appStoreAlt: 'Consíguelo en el App Store', playAlt: 'Disponible en Google Play'
+    }
+  };
+  var LINKS = {
+    support: 'assistance', terms: 'conditions-utilisation', privacy: 'politique-de-confidentialite'
+  };
+
+  // Le contenu d'origine (français) sert de référence pour revenir au FR.
+  var FR = { title: document.title };
+  document.querySelectorAll('[data-t]').forEach(function (el) { FR[el.getAttribute('data-t')] = el.innerHTML; });
+  FR.appStoreAlt = "Télécharger dans l'App Store";
+  FR.playAlt = 'Disponible sur Google Play';
+  T.fr = FR;
+
+  function apply(lang) {
+    var t = T[lang] || FR;
+    document.documentElement.lang = lang;
+    document.title = t.title;
+    document.querySelectorAll('[data-t]').forEach(function (el) {
+      var v = t[el.getAttribute('data-t')];
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-shot]').forEach(function (img) {
+      img.src = 'img/screens/' + lang + '-' + img.getAttribute('data-shot') + '.jpg';
+    });
+    document.querySelectorAll('[data-badge]').forEach(function (img) {
+      var b = img.getAttribute('data-badge');
+      img.src = 'badges/' + b + '-' + lang + (b === 'app-store' ? '.svg' : '.png');
+      img.alt = b === 'app-store' ? t.appStoreAlt : t.playAlt;
+    });
+    document.querySelectorAll('[data-href]').forEach(function (a) {
+      a.href = LINKS[a.getAttribute('data-href')] + (lang === 'fr' ? '' : '-' + lang) + '.html';
+    });
+    document.querySelectorAll('.langs button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+    });
+  }
+
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  var asked = (location.search.match(/[?&]lang=(fr|en|es)/) || [])[1];
+  var nav = (navigator.language || 'fr').slice(0, 2);
+  var lang = asked || saved || (T[nav] ? nav : 'en');
+  if (lang !== 'fr') apply(lang);
+
+  document.querySelectorAll('.langs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-lang');
+      apply(l);
+      try { localStorage.setItem('lang', l); } catch (e) {}
+    });
+  });
+
+  // Bouton fixe sur mobile : un seul lien, vers le store du téléphone.
+  if (isIOS || isAndroid) {
+    var s = document.querySelector('.sticky');
+    s.href = isIOS ? IOS : ANDROID;
+    s.classList.add('on');
+    document.querySelectorAll(isIOS ? '.android' : '.ios').forEach(function (a) { a.style.display = 'none'; });
+  }
+})();
+</script>
 </body>
 </html>

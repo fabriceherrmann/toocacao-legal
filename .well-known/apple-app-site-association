@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "XH478V7S4Q.com.toocacao.app",
+        "appIDs": ["XH478V7S4Q.com.toocacao.app"],
+        "paths": ["/chocolat", "/chocolat/*"],
+        "components": [
+          { "/": "/chocolat", "comment": "Fiche chocolat partagée" },
+          { "/": "/chocolat/*", "comment": "Fiche chocolat partagée" }
+        ]
+      }
+    ]
+  }
+}

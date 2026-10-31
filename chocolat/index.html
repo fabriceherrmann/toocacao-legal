@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TooCacao – Fiche chocolat</title>
+<meta name="description" content="Découvre ce chocolat sur TooCacao, le carnet des amateurs de chocolat.">
+<meta name="apple-itunes-app" content="app-id=6792381626">
+<meta name="theme-color" content="#111009">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Un chocolat à découvrir sur TooCacao">
+<meta property="og:description" content="Ouvre la fiche dans TooCacao : notes, avis et où l'acheter.">
+<meta property="og:image" content="https://toocacao.com/img/partage-fr.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Lora:ital@1&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg: #111009; --card: #1b1610; --line: #2e2416; --gold: #e8cfa0; --beige: #d4b880; --muted: #9c8560; --accent: #c96030; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--beige);
+         font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 17px;
+         display: flex; flex-direction: column; align-items: center; padding: 32px 16px 48px; }
+  main { width: 100%; max-width: 420px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--gold); text-decoration: none; }
+  .card { width: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px;
+          display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .photo { width: 180px; height: 240px; object-fit: contain; border-radius: 10px; background: #231b12; }
+  .photo[hidden] { display: none; }
+  .brand { margin: 0; font-size: 13px; letter-spacing: 1.6px; text-transform: uppercase; color: var(--muted); }
+  h1 { margin: 0; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 24px; line-height: 1.25; color: var(--gold); }
+  .meta { margin: 0; font-family: 'Lora', serif; font-style: italic; color: var(--beige); }
+  .open { display: inline-block; width: 100%; padding: 15px 20px; border-radius: 28px; background: var(--accent); color: #fff;
+          font-weight: 500; text-decoration: none; }
+  .stores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .stores img { height: 46px; width: auto; }
+  .note { margin: 0; font-size: 14px; color: var(--muted); line-height: 1.5; }
+</style>
+</head>
+<body>
+<main>
+  <a class="logo" href="https://toocacao.com/">TooCacao</a>
+
+  <section class="card" aria-live="polite">
+    <img class="photo" id="photo" alt="" hidden>
+    <p class="brand" id="brand"></p>
+    <h1 id="name">Un chocolat à découvrir</h1>
+    <p class="meta" id="meta"></p>
+  </section>
+
+  <a class="open" id="open" href="#" data-t="open">Ouvrir dans TooCacao</a>
+  <p class="note" id="redirect" hidden></p>
+
+  <div class="stores">
+    <a class="ios" href="https://apps.apple.com/app/id6792381626"><img id="badge-ios" src="../badges/app-store-fr.svg" alt="Télécharger dans l'App Store"></a>
+    <a class="android" href="https://play.google.com/store/apps/details?id=com.toocacao.app"><img id="badge-android" src="../badges/google-play-fr.png" alt="Disponible sur Google Play"></a>
+  </div>
+  <p class="note" data-t="hint">Pas encore l'application ? Installe-la gratuitement, puis rouvre ce lien pour arriver sur la fiche.</p>
+</main>
+
+<script>
+(function () {
+  var SUPABASE = 'https://jucyvuwxhmnsydhtsdvp.supabase.co';
+  var KEY = 'sb_publishable__8Qt3F7QJh6Mbc4YeN4tmw_chw7y5Fq';
+  var IOS = 'https://apps.apple.com/app/id6792381626';
+  var ANDROID = 'https://play.google.com/store/apps/details?id=com.toocacao.app';
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+  var lang = (navigator.language || 'fr').slice(0, 2);
+  if (['fr', 'en', 'es'].indexOf(lang) < 0) lang = 'en';
+  var T = {
+    fr: { open: 'Ouvrir dans TooCacao', hint: "Pas encore l'application ? Installe-la gratuitement, puis rouvre ce lien pour arriver sur la fiche.",
+          title: 'Un chocolat à découvrir', toIos: "Redirection vers l'App Store…", toAndroid: 'Redirection vers Google Play…',
+          dark: 'Noir', milk: 'Lait', white: 'Blanc', ios: "Télécharger dans l'App Store", android: 'Disponible sur Google Play' },
+    en: { open: 'Open in TooCacao', hint: "Don't have the app yet? Install it for free, then open this link again to see the bar.",
+          title: 'A chocolate to discover', toIos: 'Redirecting to the App Store…', toAndroid: 'Redirecting to Google Play…',
+          dark: 'Dark', milk: 'Milk', white: 'White', ios: 'Download on the App Store', android: 'Get it on Google Play' },
+    es: { open: 'Abrir en TooCacao', hint: '¿Aún no tienes la app? Instálala gratis y vuelve a abrir este enlace para ver la ficha.',
+          title: 'Un chocolate por descubrir', toIos: 'Redirigiendo a la App Store…', toAndroid: 'Redirigiendo a Google Play…',
+          dark: 'Negro', milk: 'Con leche', white: 'Blanco', ios: 'Descárgalo en la App Store', android: 'Disponible en Google Play' }
+  }[lang];
+
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-t]').forEach(function (el) { el.textContent = T[el.getAttribute('data-t')]; });
+  document.getElementById('name').textContent = T.title;
+  var bi = document.getElementById('badge-ios'), ba = document.getElementById('badge-android');
+  bi.src = '../badges/app-store-' + lang + '.svg'; bi.alt = T.ios;
+  ba.src = '../badges/google-play-' + lang + '.png'; ba.alt = T.android;
+
+  var id = new URLSearchParams(location.search).get('id') || '';
+  if (!UUID.test(id)) id = '';
+  // Versions de l'app sans liens universels : le schéma toocacao:// ouvre l'app sur la fiche.
+  document.getElementById('open').href = id ? 'toocacao://chocolat/' + id : 'toocacao://';
+
+  if (id) {
+    fetch(SUPABASE + '/rest/v1/chocolates?id=eq.' + id + '&select=name,brand,image_url,cacao_percent,chocolate_type',
+          { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (rows) {
+        var c = rows && rows[0];
+        if (!c) return;
+        document.title = (c.brand ? c.brand + ' – ' : '') + c.name + ' · TooCacao';
+        document.getElementById('brand').textContent = c.brand || '';
+        document.getElementById('name').textContent = c.name;
+        var meta = [];
+        if (c.chocolate_type && T[c.chocolate_type]) meta.push(T[c.chocolate_type]);
+        if (c.cacao_percent) meta.push(c.cacao_percent + ' %');
+        document.getElementById('meta').textContent = meta.join(' · ');
+        if (c.image_url && /^https:\/\//.test(c.image_url)) {
+          var p = document.getElementById('photo'); p.src = c.image_url; p.alt = c.name; p.hidden = false;
+        }
+      })
+      .catch(function () {});
+  }
+
+  // Sur téléphone, l'app n'est visiblement pas installée (sinon le lien l'aurait ouverte) :
+  // redirection vers le bon store, sauf si la personne touche la page entre-temps.
+  var ua = navigator.userAgent || '';
+  var isIos = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+  var isAndroid = /Android/.test(ua);
+  if (isIos || isAndroid) {
+    document.querySelector(isIos ? '.android' : '.ios').hidden = true;
+    var note = document.getElementById('redirect');
+    note.textContent = isIos ? T.toIos : T.toAndroid; note.hidden = false;
+    var timer = setTimeout(function () { location.href = isIos ? IOS : ANDROID; }, 3500);
+    ['touchstart', 'mousedown', 'keydown'].forEach(function (ev) {
+      window.addEventListener(ev, function () { clearTimeout(timer); note.hidden = true; }, { once: true });
+    });
+  }
+})();
+</script>
+</body>
+</html>

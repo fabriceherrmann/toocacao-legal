@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.toocacao.app",
+      "sha256_cert_fingerprints": [
+        "3A:A3:1A:4E:60:FB:08:27:92:61:68:DE:C7:D3:E2:16:A8:05:B3:9A:BC:4C:E3:DC:62:0B:9C:5A:BB:EC:DD:BD",
+        "00:E4:A4:9E:69:02:66:69:0D:62:B6:35:46:62:BF:AB:F1:1C:E3:87:3C:B8:E1:4D:9C:EF:4B:57:61:7B:57:3F"
+      ]
+    }
+  }
+]

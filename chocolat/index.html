@@ -116,6 +116,11 @@
       .catch(function () {});
   }
 
+  // Redirection automatique vers le store : à réactiver (true) une fois la 1.2.0 diffusée.
+  // Avant la 1.2.0, les liens universels ne sont pas dans l'app : quelqu'un qui l'a déjà
+  // serait renvoyé à tort vers le store.
+  var AUTO_REDIRECT = false;
+
   // Sur téléphone, l'app n'est visiblement pas installée (sinon le lien l'aurait ouverte) :
   // redirection vers le bon store, sauf si la personne touche la page entre-temps.
   var ua = navigator.userAgent || '';
@@ -123,6 +128,8 @@
   var isAndroid = /Android/.test(ua);
   if (isIos || isAndroid) {
     document.querySelector(isIos ? '.android' : '.ios').hidden = true;
+  }
+  if (AUTO_REDIRECT && (isIos || isAndroid)) {
     var note = document.getElementById('redirect');
     note.textContent = isIos ? T.toIos : T.toAndroid; note.hidden = false;
     var timer = setTimeout(function () { location.href = isIos ? IOS : ANDROID; }, 3500);

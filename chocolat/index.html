@@ -116,10 +116,10 @@
       .catch(function () {});
   }
 
-  // Redirection automatique vers le store : à réactiver (true) une fois la 1.2.0 diffusée.
-  // Avant la 1.2.0, les liens universels ne sont pas dans l'app : quelqu'un qui l'a déjà
-  // serait renvoyé à tort vers le store.
-  var AUTO_REDIRECT = false;
+  // Redirection automatique vers le store (réactivée le 07/11/2026, 1.2.0 publiée sur les
+  // deux stores) : les versions installées ouvrent ces liens directement, cette page ne
+  // s'affiche donc qu'aux personnes qui n'ont pas l'app.
+  var AUTO_REDIRECT = true;
 
   // Sur téléphone, l'app n'est visiblement pas installée (sinon le lien l'aurait ouverte) :
   // redirection vers le bon store, sauf si la personne touche la page entre-temps.
